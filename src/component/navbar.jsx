@@ -20,7 +20,6 @@ const Navbar = () => {
        console.log(err)
      })
   },[searchData])
-  console.log(data)
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light nav_main">
@@ -40,26 +39,29 @@ const Navbar = () => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul className="navbar-nav mx-auto mt-2 mt-lg-0">
-          <li className="nav-item ">
+          {/* <ul className="navbar-nav mx-auto mt-2 mt-lg-0">
+          <li className="nav-item px-3">
               <NavLink className="nav-link " to={'/'}>
                 <h6>Home</h6>
               </NavLink>
             </li>
-            <li className="nav-item mx-3">
+            <li className="nav-item px-3">
               <NavLink className="nav-link " to={'/womenproduct'}>
               <h6>Women Products</h6>
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item px-3">
               <NavLink className="nav-link" to={'/menproduct'}>
               <h6>Men Products</h6>
               </NavLink>
             </li>
-          </ul>
+          </ul> */}
         </div>
-        <div className="w-20 ms-5">
-          <input className="form-control px-5" placeholder="search product" value={searchData} onChange={handleSearch}/>
+        <div className=" ms-3">
+          <div className="d-flex">
+              <input className="form-control pr-5 global_search" placeholder="search product" value={searchData} onChange={handleSearch}/>
+              <button>Search</button>
+          </div>
           <div className={show ? "bg-white text-dark input_search" : "display-block"}>
               {data ? data.map((item,index) => {
                 return(
@@ -74,9 +76,9 @@ const Navbar = () => {
         <div className="collapse navbar-collapse fav-login" id="navbarTogglerDemo02">
           <ul className="navbar-nav my-2 mt-2 mt-lg-0 me-5 ms-auto">
             <li className="nav-item d-flex justify-content-center align-items-center">
-          <div className="me-4 addtocart">
-            <i className="fa-solid fa-cart-shopping" onClick={()=>{navigate('/signup')}}>+{0}</i>
-          </div>
+              <div className="me-4 addtocart">
+                <i className="fa-solid fa-cart-shopping" onClick={()=>{navigate('/signup')}}>+{0}</i>
+              </div >
               <i className="fa-solid fa-right-to-bracket "></i>
               <NavLink className="nav-link me-3" to={'/login'}>
                 Login
