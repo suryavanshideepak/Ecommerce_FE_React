@@ -1,5 +1,6 @@
 import React from "react";
 import image from "../images/shope.png";
+import ProductCard from "./ProductCard/ProductCard";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
           Lowest Prices Best Quality Shopping
         </h1>
       </div>
+      <ProductCard/>
       <div className="container my-5">
         <div className="row">
           <div className="col-md-6">
@@ -29,7 +31,7 @@ const Home = () => {
         <div className="row">
         <div className="col-md-6 d-flex justify-content-center align-items-center">
             <img src={image} alt="" />
-          </div>
+        </div>
           <div className="col-md-6"> 
             <h1>Welcome To our Wide Range of clothes Store</h1>
             <p>

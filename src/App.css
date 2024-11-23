@@ -36,5 +36,18 @@
   margin: 5px 0px 0px 0px
 }
 .global_search{
-  width: 500px !important;
+  width: 400px !important;
+  border:0px !important;
+  border:none !important;
 }
+.global_search_button{
+  border: none !important;
+  border-radius: 0px;
+}
+@media only screen and (max-width: 500px) {
+  .global_search{
+    width: 250px !important;
+  }
+  
+}
+

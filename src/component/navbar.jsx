@@ -58,9 +58,9 @@ const Navbar = () => {
           </ul> */}
         </div>
         <div className=" ms-3">
-          <div className="d-flex">
+          <div className="d-flex m-1">
               <input className="form-control pr-5 global_search" placeholder="search product" value={searchData} onChange={handleSearch}/>
-              <button>Search</button>
+              <button className="btn btn-dark global_search_button">Search</button>
           </div>
           <div className={show ? "bg-white text-dark input_search" : "display-block"}>
               {data ? data.map((item,index) => {
