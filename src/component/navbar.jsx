@@ -24,7 +24,7 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light nav_main">
         <h1 className="px-3 nav">
-        BucketFull
+         BucketFull
         </h1>
         <button
           className="navbar-toggler"

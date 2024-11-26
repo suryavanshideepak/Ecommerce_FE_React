@@ -1,16 +1,29 @@
 import React from "react";
 import image from "../images/shope.png";
 import ProductCard from "./ProductCard/ProductCard";
+import ProductFilter from "./ProductFilter/ProductFilter";
+import BannerCarousel from "./HomePageBanner/BannerCarousel";
 
 const Home = () => {
   return (
     <>
       <div className="home">
-        <h1 className=" text-center pt-5">
-          Lowest Prices Best Quality Shopping
+        <h1 className=" text-center pt-2">
+          <BannerCarousel/>
         </h1>
       </div>
-      <ProductCard/>
+
+      <div className="container py-5">
+        <div className="row pt-4">
+          <div className="col-md-3">
+            <ProductFilter/>
+          </div>
+          <div className="col-md-9">
+            <ProductCard/>
+          </div>
+        </div>
+      </div>
+
       <div className="container my-5">
         <div className="row">
           <div className="col-md-6">
