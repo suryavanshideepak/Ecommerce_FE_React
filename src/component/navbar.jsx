@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light nav_main">
-        <h1 className="px-3 nav">
+        <h1 className="px-3 nav" style={{cursor:'pointer'}} onClick={() => navigate('/')}>
          BucketFull
         </h1>
         <button
@@ -60,7 +60,7 @@ const Navbar = () => {
         <div className=" ms-3">
           <div className="d-flex m-1">
               <input className="form-control pr-5 global_search" placeholder="search product" value={searchData} onChange={handleSearch}/>
-              <button className="btn btn-dark global_search_button">Search</button>
+              <button className="btn btn-dark global_search_button mx-2">Search</button>
           </div>
           <div className={show ? "bg-white text-dark input_search" : "display-block"}>
               {data ? data.map((item,index) => {

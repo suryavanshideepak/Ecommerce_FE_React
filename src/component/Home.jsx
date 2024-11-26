@@ -19,6 +19,7 @@ const Home = () => {
             <ProductFilter/>
           </div>
           <div className="col-md-9">
+            <h2> Top Rated Products</h2>
             <ProductCard/>
           </div>
         </div>
