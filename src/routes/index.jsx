@@ -7,6 +7,7 @@ import Womenpr from '../component/Womenpr';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from '../component/navbar';
 import Footer from '../component/Footer';
+import CartPage from '../pages/CartPage';
 
 const MyRoute = () => {
     const pages= [
@@ -14,7 +15,8 @@ const MyRoute = () => {
         { path:'/login', exact: true, Component: Login },
         { path:'/signup', exact: true, Component: Signup },
         { path:'/menproduct', exact:true, Component: Menspro},
-        { path:'/womenproduct', exact:true, Component: Womenpr}
+        { path:'/womenproduct', exact:true, Component: Womenpr},
+        { path:'/cart', exact:true, Component: CartPage}
     ];
   return (
     <BrowserRouter>

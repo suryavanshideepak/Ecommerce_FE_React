@@ -18,6 +18,8 @@
 }
 .body {
   height: 100vh;
+  background-color: linear-gradient(rgb(253, 233, 242) 0%, rgb(253, 240, 232) 100%, rgb(253, 240, 232) 100%) !important;
+
 }
 .addtocart{
   cursor: pointer;
@@ -43,6 +45,9 @@
 .global_search_button{
   border: none !important;
   border-radius: 0px;
+}
+.cart_count{
+  font-size: small;
 }
 @media only screen and (max-width: 500px) {
   .global_search{

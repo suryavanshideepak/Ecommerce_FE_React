@@ -27,7 +27,7 @@ const Navbar = () => {
          BucketFull
         </h1>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler m-2"
           type="button"
           data-toggle="collapse"
           data-target="#navbarTogglerDemo02"
@@ -74,10 +74,10 @@ const Navbar = () => {
         </div>
 
         <div className="collapse navbar-collapse fav-login" id="navbarTogglerDemo02">
-          <ul className="navbar-nav my-2 mt-2 mt-lg-0 me-5 ms-auto">
+          <ul className="navbar-nav my-2 mt-2 mt-lg-0 me-5 ms-auto font_icons">
             <li className="nav-item d-flex justify-content-center align-items-center">
               <div className="me-4 addtocart">
-                <i className="fa-solid fa-cart-shopping" onClick={()=>{navigate('/signup')}}>+{0}</i>
+                <i className="fa-solid fa-cart-shopping" onClick={()=>{navigate('/cart')}}><span className="cart_count">+{0}</span></i>
               </div >
               <i className="fa-solid fa-right-to-bracket "></i>
               <NavLink className="nav-link me-3" to={'/login'}>

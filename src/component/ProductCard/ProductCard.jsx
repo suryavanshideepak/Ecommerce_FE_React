@@ -5,7 +5,7 @@ const ProductCard = () => {
         <>
             <div className="container">
                 <div className="d-flex justify-content-center row">
-                    <div className="col-md-10">
+                    <div className="col-md-10 w-100">
                         <div className="row p-2 bg-white border rounded">
                             <div className="col-md-3 mt-1"><img alt='image1' className="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/QpjAiHq.jpg" /></div>
                             <div className="col-md-6 mt-1">
