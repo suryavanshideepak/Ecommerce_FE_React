@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import {NavLink, useNavigate} from 'react-router-dom'
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [show, setShow] = useState(false)
+  const {selectedCart} = useSelector((state) => state.cart)
   const [searchData,setSearchData] = useState("")
   const navigate = useNavigate()
   const [data,setData] = useState([])
@@ -77,7 +79,7 @@ const Navbar = () => {
           <ul className="navbar-nav my-2 mt-2 mt-lg-0 me-5 ms-auto font_icons">
             <li className="nav-item d-flex justify-content-center align-items-center">
               <div className="me-4 addtocart">
-                <i className="fa-solid fa-cart-shopping" onClick={()=>{navigate('/cart')}}><span className="cart_count">+{0}</span></i>
+                <i className="fa-solid fa-cart-shopping" onClick={()=>{navigate('/cart')}}><span className="cart_count">+{selectedCart?.length ? selectedCart.length : 0}</span></i>
               </div >
               <i className="fa-solid fa-right-to-bracket "></i>
               <NavLink className="nav-link me-3" to={'/login'}>

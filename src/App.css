@@ -8,7 +8,6 @@
 
 }
 .nav_main{
-  /* border-bottom: 1px solid gray; */
   font-family: 'Nunito Sans', sans-serif;
   font-size: 14px;
   position: sticky;
@@ -18,8 +17,7 @@
 }
 .body {
   height: 100vh;
-  background-color: linear-gradient(rgb(253, 233, 242) 0%, rgb(253, 240, 232) 100%, rgb(253, 240, 232) 100%) !important;
-
+  background: linear-gradient(rgb(253, 233, 242) 0%, rgb(253, 240, 232) 100%, rgb(253, 240, 232) 100%) !important;
 }
 .addtocart{
   cursor: pointer;
@@ -48,6 +46,9 @@
 }
 .cart_count{
   font-size: small;
+}
+.app{
+  background-color: linear-gradient(rgb(253, 233, 242) 0%, rgb(253, 240, 232) 100%, rgb(253, 240, 232) 100%) !important;
 }
 @media only screen and (max-width: 500px) {
   .global_search{

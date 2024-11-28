@@ -3,7 +3,6 @@ import Home from '../component/Home';
 import Login from '../auth/Login';
 import Signup from '../auth/Signup';
 import Menspro from '../component/Menspro';
-import Womenpr from '../component/Womenpr';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from '../component/navbar';
 import Footer from '../component/Footer';
@@ -15,7 +14,6 @@ const MyRoute = () => {
         { path:'/login', exact: true, Component: Login },
         { path:'/signup', exact: true, Component: Signup },
         { path:'/menproduct', exact:true, Component: Menspro},
-        { path:'/womenproduct', exact:true, Component: Womenpr},
         { path:'/cart', exact:true, Component: CartPage}
     ];
   return (
