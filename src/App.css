@@ -50,6 +50,11 @@
 .app{
   background-color: linear-gradient(rgb(253, 233, 242) 0%, rgb(253, 240, 232) 100%, rgb(253, 240, 232) 100%) !important;
 }
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the container takes full viewport height */
+}
 @media only screen and (max-width: 500px) {
   .global_search{
     width: 250px !important;

@@ -25,7 +25,7 @@ const BannerCarousel = () => {
   ];
 
   return (
-    <div style={{ width: "80%", margin: "auto", }}>
+    <div style={{ width: "100%", margin: "auto", }}>
       <Slider {...settings}>
         {images.map((image, index) => (
           <div key={index}>

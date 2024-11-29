@@ -13,12 +13,12 @@ const CartPage = () => {
         dispatch(removeCartItem(id))
     }
     return (
-        <div className='h-100 p-5'>
+        <div className='p-5' style={{minHeight:'100vh'}}>
             {selectedCart.length ?
                 <>
                     <div className="">
                         <div className="row d-flex justify-content-between">
-                            <div className="col-md-8 border m-1">
+                            <div className="col-md-9 border">
                                 {selectedCart?.length && selectedCart.map((item, index) => {
                                     return (
                                         <div className="row p-2 bg-white border rounded m-2" key={item.id} style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}>
@@ -83,7 +83,7 @@ const CartPage = () => {
                                     <p className='text-success'>You will save $ on this order</p>
                                 </div>
                                 <div className='m-1'> 
-                                    <button className='border p-2 text-white w-100' style={{backgroundColor:'rgb(244, 51, 151)',boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}}>
+                                    <button className='btn btn-light border py-3 text-white w-100' style={{backgroundColor:'rgb(244, 51, 151)'}}>
                                         PLACE ORDER
                                     </button>
                                 </div>
@@ -92,7 +92,7 @@ const CartPage = () => {
                     </div>
                 </> :
                 <div style={{
-                    height: '80vh', display: 'flex', justifyContent: 'center', alignItems: 'center'
+                    minHeight: '67vh', display: 'flex', justifyContent: 'center', alignItems: 'center'
                 }}>
                     <h1>Sorry, No Item in Cart</h1>
                 </div>}
