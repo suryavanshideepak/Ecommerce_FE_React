@@ -18,6 +18,7 @@ const Home = () => {
           <div className="container py-5">
             <div className="row pt-4">
               <div className="col-md-3 my-1 hide-on-small">
+                <h2> Filter</h2>
                 <ProductFilter />
               </div>
               <div className="col-md-9 my-1">

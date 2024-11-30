@@ -7,7 +7,7 @@ const ProductFilter = () => {
                 <div className="card">
                     <article className="filter-group">
                         <header className="card-header">
-                            <a href="/" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" className="">
+                            <a href="/" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" className="">
                                 <i className="icon-control fa fa-chevron-down"></i>
                                 <h6 className="title">Product type</h6>
                             </a>
@@ -38,7 +38,7 @@ const ProductFilter = () => {
                     </article>
                     <article className="filter-group">
                         <header className="card-header">
-                            <a href="/" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" className="">
+                            <a href="/" data-toggle="collapse" data-target="#collapse_2" aria-expanded="false" className="">
                                 <i className="icon-control fa fa-chevron-down"></i>
                                 <h6 className="title">Brands </h6>
                             </a>
@@ -75,7 +75,7 @@ const ProductFilter = () => {
                     </article>
                     <article className="filter-group">
                         <header className="card-header">
-                            <a href="/" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" className="">
+                            <a href="/" data-toggle="collapse" data-target="#collapse_3" aria-expanded="false" className="">
                                 <i className="icon-control fa fa-chevron-down"></i>
                                 <h6 className="title">Price range </h6>
                             </a>
@@ -99,12 +99,12 @@ const ProductFilter = () => {
                     </article>
                     <article className="filter-group">
                         <header className="card-header">
-                            <a href="/" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" className="">
+                            <a href="/" data-toggle="collapse" data-target="#collapse_4" aria-expanded="false" className="">
                                 <i className="icon-control fa fa-chevron-down"></i>
                                 <h6 className="title">Sizes </h6>
                             </a>
                         </header>
-                        <div className="filter-content collapse show" id="collapse_4" >
+                        <div className="filter-content collapse in" id="collapse_4" >
                             <div className="card-body">
                                 <label className="checkbox-btn">
                                     <input type="checkbox" />

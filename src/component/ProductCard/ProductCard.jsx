@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../app/cartSlice'
 
 const ProductCard = () => {
-    const { cart, selectedCart } = useSelector((state) => state?.cart)
+    const { selectedCart } = useSelector((state) => state?.cart)
     const dispatch = useDispatch()
 
     const handleAddToCart = (id) => {
@@ -35,18 +35,20 @@ const ProductCard = () => {
                                         </div>
                                         <h6 className="text-success">Free shipping</h6>
                                         <div className="d-flex flex-column mt-4">
-                                            <button className="btn btn-primary btn-sm" type="button">Details</button>
+                                            <button className="btn btn-light btn-sm" style={{backgroundColor:'rgb(244, 51, 151)',color:'white'}} type="button">Details</button>
                                             {
                                                 selectedCart?.length && selectedCart?.find((cartItem) => cartItem?.id === item.id) ?
                                                     <button
-                                                        className="btn btn-outline-primary btn-sm mt-2"
+                                                        className="btn btn-outline-light btn-sm mt-2"
+                                                        style={{border:'1px solid grey',color:'grey'}}
                                                         disabled={true}
                                                         type="button"
                                                     >
                                                         Added to wishlist
                                                     </button> :
                                                     <button
-                                                        className="btn btn-outline-primary btn-sm mt-2"
+                                                        className="btn btn-outline-light btn-sm mt-2"
+                                                        style={{border:'1px solid rgb(244, 51, 151)',color:'rgb(244, 51, 151)'}}
                                                         type="button"
                                                         onClick={() => handleAddToCart(item.id)}
                                                     >
