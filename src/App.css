@@ -57,6 +57,15 @@
 }
 @media only screen and (max-width: 500px) {
   .global_search{
+    width: 300px !important;
+  }
+  .hide-on-small{
+    display: none !important;
+  }
+  
+}
+@media only screen and (max-width: 400px) {
+  .global_search{
     width: 250px !important;
   }
   

@@ -17,10 +17,10 @@ const Home = () => {
 
           <div className="container py-5">
             <div className="row pt-4">
-              <div className="col-md-3">
+              <div className="col-md-3 my-1 hide-on-small">
                 <ProductFilter />
               </div>
-              <div className="col-md-9">
+              <div className="col-md-9 my-1">
                 <h2> Top Rated Products</h2>
                 <ProductCard />
               </div>
