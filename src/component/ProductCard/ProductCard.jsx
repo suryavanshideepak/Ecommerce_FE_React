@@ -2,6 +2,7 @@ import React from 'react'
 import { data } from '../../utility/demoData'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../app/cartSlice'
+import ProductDetailsPage from '../../pages/ProductDetailsPage'
 
 const ProductCard = () => {
     const { selectedCart } = useSelector((state) => state?.cart)
@@ -18,12 +19,12 @@ const ProductCard = () => {
                     <div className="col-md-10 w-100">
                         {data.map((item, index) => {
                             return (
-                                <div className="row p-2 bg-white border rounded">
+                                <div className="row p-2 bg-white border rounded m-1">
                                     <div className="col-md-3 mt-1"><img alt='image1' className="img-fluid img-responsive rounded product-image" src={item.image} /></div>
                                     <div className="col-md-6 mt-1">
                                         <h5>{item.productName}</h5>
                                         <div className="d-flex flex-row">
-                                            <div className="ratings mr-2"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div><span>310</span>
+                                            <div className="ratings text-warning mr-2"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div><span>310</span>
                                         </div>
                                         <div className="mt-1 mb-1 spec-1"><span>100% cotton</span><span className="dot"></span><span>Light weight</span><span className="dot"></span><span>Best finish<br /></span></div>
                                         <div className="mt-1 mb-1 spec-1"><span>Unique design</span><span className="dot"></span><span>For men</span><span className="dot"></span><span>Casual<br /></span></div>
@@ -31,11 +32,24 @@ const ProductCard = () => {
                                     </div>
                                     <div className="align-items-center align-content-center col-md-3 border-left mt-1">
                                         <div className="d-flex flex-row align-items-center">
-                                            <h4 className="mr-1">${item.offerPrice}</h4><span className="strike-text">${item.mrp}</span>
+                                            <h4 className="mr-1">${item.offerPrice}</h4><span className="strike-text text-decoration-line-through text-danger">${item.mrp}</span>
                                         </div>
                                         <h6 className="text-success">Free shipping</h6>
                                         <div className="d-flex flex-column mt-4">
-                                            <button className="btn btn-light btn-sm" style={{backgroundColor:'rgb(244, 51, 151)',color:'white'}} type="button">Details</button>
+                                            <button className="btn btn-light btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg" style={{backgroundColor:'rgb(244, 51, 151)',color:'white'}} type="button">Details</button>
+                                            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                    <ProductDetailsPage item={item}/>
+                                                </div>
+                                            </div>
+                                            </div>
                                             {
                                                 selectedCart?.length && selectedCart?.find((cartItem) => cartItem?.id === item.id) ?
                                                     <button
