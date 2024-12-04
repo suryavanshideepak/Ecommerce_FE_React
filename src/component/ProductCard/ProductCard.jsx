@@ -1,23 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { data } from '../../utility/demoData'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../../app/cartSlice'
+import { addToCart, getAllProducts } from '../../app/cartSlice'
 import ProductDetailsPage from '../../pages/ProductDetailsPage'
 
 const ProductCard = () => {
-    const { selectedCart } = useSelector((state) => state?.cart)
+    const { selectedCart, cart } = useSelector((state) => state?.cart)
     const dispatch = useDispatch()
 
     const handleAddToCart = (id) => {
         dispatch(addToCart(id))
     }
 
+    useEffect(() => {
+        dispatch(getAllProducts())
+    },[])
+
     return (
         <>
             <div className="container">
                 <div className="d-flex justify-content-center row">
                     <div className="col-md-10 w-100">
-                        {data.map((item, index) => {
+                        {cart.map((item, index) => {
                             return (
                                 <div className="row p-2 bg-white border rounded m-1">
                                     <div className="col-md-3 mt-1"><img alt='image1' className="img-fluid img-responsive rounded product-image" src={item.image} /></div>

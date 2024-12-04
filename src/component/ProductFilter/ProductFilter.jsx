@@ -1,7 +1,13 @@
 import React from 'react'
 import '../ProductFilter/productFilter.css'
+import { useDispatch } from 'react-redux'
+import { filterProducts } from '../../app/cartSlice'
 
 const ProductFilter = () => {
+    const dispatch = useDispatch()
+    const handleProductType = (productType) => {
+        dispatch(filterProducts({filterType:'productType',productType:productType}))
+    }
     return (
 
                 <div className="card">
@@ -24,13 +30,10 @@ const ProductFilter = () => {
                                 </form>
 
                                 <ul className="list-menu">
-                                    <li><a href="/">People  </a></li>
-                                    <li><a href="/">Watches </a></li>
-                                    <li><a href="/">Cinema  </a></li>
-                                    <li><a href="/">Clothes  </a></li>
-                                    <li><a href="/">Home items </a></li>
-                                    <li><a href="/">Animals</a></li>
-                                    <li><a href="/">People </a></li>
+                                    <li style={{cursor:'pointer'}} onClick={() => handleProductType('cloth')}>Cloth  </li>
+                                    <li style={{cursor:'pointer'}} onClick={() => handleProductType('shoes')}>Shoes </li>
+                                    <li style={{cursor:'pointer'}} onClick={() => handleProductType('watch')}>Watch </li>
+                                    <li style={{cursor:'pointer'}} onClick={() => handleProductType('electronics')}>Electronics </li>                                    
                                 </ul>
 
                             </div>
@@ -47,28 +50,23 @@ const ProductFilter = () => {
                             <div className="card-body">
                                 <label className="custom-control custom-checkbox">
                                     <input type="checkbox" checked="" className="custom-control-input" />
-                                    <div className="custom-control-label">Mercedes
+                                    <div className="custom-control-label">Samsung
                                         <b className="badge badge-pill badge-light float-right">120</b>  </div>
                                 </label>
                                 <label className="custom-control custom-checkbox">
                                     <input type="checkbox" checked="" className="custom-control-input" />
-                                    <div className="custom-control-label">Toyota
+                                    <div className="custom-control-label">Reebok
                                         <b className="badge badge-pill badge-light float-right">15</b>  </div>
                                 </label>
                                 <label className="custom-control custom-checkbox">
                                     <input type="checkbox" checked="" className="custom-control-input" />
-                                    <div className="custom-control-label">Mitsubishi
+                                    <div className="custom-control-label">Nike
                                         <b className="badge badge-pill badge-light float-right">35</b> </div>
                                 </label>
                                 <label className="custom-control custom-checkbox">
                                     <input type="checkbox" checked="" className="custom-control-input" />
-                                    <div className="custom-control-label">Nissan
+                                    <div className="custom-control-label">Addidas
                                         <b className="badge badge-pill badge-light float-right">89</b> </div>
-                                </label>
-                                <label className="custom-control custom-checkbox">
-                                    <input type="checkbox" className="custom-control-input" />
-                                    <div className="custom-control-label">Honda
-                                        <b className="badge badge-pill badge-light float-right">30</b>  </div>
                                 </label>
                             </div>
                         </div>

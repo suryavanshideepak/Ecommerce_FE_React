@@ -3,8 +3,11 @@ import image from "../images/shope.png";
 import ProductCard from "./ProductCard/ProductCard";
 import ProductFilter from "./ProductFilter/ProductFilter";
 import BannerCarousel from "./HomePageBanner/BannerCarousel";
+import { useDispatch } from "react-redux";
+import { clearFilter } from "../app/cartSlice";
 
 const Home = () => {
+  const dispatch = useDispatch()
   return (
     <div className="d-flex flex-column min-vh-100">
       <main className="flex-grow-1">
@@ -18,7 +21,10 @@ const Home = () => {
           <div className="container py-5">
             <div className="row pt-4">
               <div className="col-md-3 my-1 hide-on-small">
-                <h2> Filter</h2>
+                <div className="d-flex justify-content-between align-items-center">
+                 <h2> Filter</h2>
+                <a onClick={() => dispatch(clearFilter())} href="#"> Clear Filter</a>
+                </div>
                 <ProductFilter />
               </div>
               <div className="col-md-9 my-1">
