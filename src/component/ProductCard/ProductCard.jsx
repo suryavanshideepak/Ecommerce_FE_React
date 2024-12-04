@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { data } from '../../utility/demoData'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, getAllProducts } from '../../app/cartSlice'
 import ProductDetailsPage from '../../pages/ProductDetailsPage'
@@ -21,7 +20,7 @@ const ProductCard = () => {
             <div className="container">
                 <div className="d-flex justify-content-center row">
                     <div className="col-md-10 w-100">
-                        {cart.map((item, index) => {
+                        {cart.length && cart.map((item, index) => {
                             return (
                                 <div className="row p-2 bg-white border rounded m-1">
                                     <div className="col-md-3 mt-1"><img alt='image1' className="img-fluid img-responsive rounded product-image" src={item.image} /></div>
@@ -32,6 +31,10 @@ const ProductCard = () => {
                                         </div>
                                         <div className="mt-1 mb-1 spec-1"><span>100% cotton</span><span className="dot"></span><span>Light weight</span><span className="dot"></span><span>Best finish<br /></span></div>
                                         <div className="mt-1 mb-1 spec-1"><span>Unique design</span><span className="dot"></span><span>For men</span><span className="dot"></span><span>Casual<br /></span></div>
+                                        <ul className='d-flex justify-content-between'>
+                                            <li>Brand : {item.brand}</li>
+                                            <li>Product Type : {item.productType}</li>
+                                        </ul>
                                         <p className="text-justify text-truncate para mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.<br /><br /></p>
                                     </div>
                                     <div className="align-items-center align-content-center col-md-3 border-left mt-1">

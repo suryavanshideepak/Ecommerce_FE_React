@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { data } from "../utility/demoData";
 
 const initialState = {
-    cart:[],
+    cart:data,
     selectedCart:[]
 }
 
@@ -12,6 +12,7 @@ export const cartSlice = createSlice({
     reducers: {
         getAllProducts: (state,action) => {
           state.cart = data
+          console.log(state.cart)
         },
         addToCart: (state,action) =>{
             const itemToPush = state.cart.find((item,index) => item.id === action.payload)
@@ -24,6 +25,14 @@ export const cartSlice = createSlice({
             state.cart = data
             if(action.payload.filterType === 'productType'){
                 state.cart = state.cart.filter((item) => item.productType === action.payload.productType);
+            }
+            if(action.payload.filterType === 'productBrand'){
+                const selectedFilter = Object.keys(action.payload.productBrand).filter((brand) => action.payload.productBrand[brand])
+                state.cart = state.cart.filter((item) => selectedFilter.includes(item.brand))
+            }
+            if(action.payload.filterType === 'searchProduct'){
+                const searchString = action.payload.searchProduct
+                state.cart = state.cart.filter(item => item.productName.toLowerCase().includes(searchString))
             }
         },
         clearFilter: (state, action) => {

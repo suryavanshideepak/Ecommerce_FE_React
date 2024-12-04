@@ -23,7 +23,7 @@ const Home = () => {
               <div className="col-md-3 my-1 hide-on-small">
                 <div className="d-flex justify-content-between align-items-center">
                  <h2> Filter</h2>
-                <a onClick={() => dispatch(clearFilter())} href="#"> Clear Filter</a>
+                <div style={{cursor:'pointer'}} onClick={() => dispatch(clearFilter())} > Clear Filter</div>
                 </div>
                 <ProductFilter />
               </div>
