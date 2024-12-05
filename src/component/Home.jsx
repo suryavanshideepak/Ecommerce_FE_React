@@ -22,8 +22,8 @@ const Home = () => {
             <div className="row pt-4">
               <div className="col-md-3 my-1 hide-on-small">
                 <div className="d-flex justify-content-between align-items-center">
-                 <h2> Filter</h2>
-                <div style={{cursor:'pointer'}} onClick={() => dispatch(clearFilter())} > Clear Filter</div>
+                  <h2> Filter</h2>
+                  <div style={{ cursor: 'pointer' }} onClick={() => dispatch(clearFilter())} > Clear Filter</div>
                 </div>
                 <ProductFilter />
               </div>
@@ -63,6 +63,39 @@ const Home = () => {
                   impedit ipsam nemo, cumque libero doloremque? Suscipit, fuga?
                 </p>
                 <button className="btn btn-primary">Info</button>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasWithBackdrop"
+                  aria-controls="offcanvasWithBackdrop"
+                  className="sticky-filter-button"
+                >
+                  Filter
+                </button>
+
+                <div
+                  className="offcanvas offcanvas-start"
+                  tabIndex="-1"
+                  id="offcanvasWithBackdrop"
+                  aria-labelledby="offcanvasWithBackdropLabel"
+                >
+                  <div className="offcanvas-header">
+                    <h5 className="offcanvas-title" id="offcanvasWithBackdropLabel">
+                      Filters
+                    </h5>
+                    <button
+                      type="button"
+                      className="btn-close text-reset"
+                      data-bs-dismiss="offcanvas"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div className="offcanvas-body">
+                  <ProductFilter/>
+                  </div>
+                </div>
               </div>
 
             </div>

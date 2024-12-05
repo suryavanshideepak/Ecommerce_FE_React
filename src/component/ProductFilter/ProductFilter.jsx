@@ -5,6 +5,8 @@ import { filterProducts } from '../../app/cartSlice'
 
 const ProductFilter = () => {
     const [search, setSearch] = useState("")
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(100);
     const [filters, setFilters] = useState({
         Samsung: true,
         Reebok: true,
@@ -33,6 +35,17 @@ const ProductFilter = () => {
             dispatch(filterProducts({filterType: 'searchProduct', searchProduct: value }))
         },500)
     }
+
+    const handlePriceRangeFilterv=()=> {
+        dispatch(filterProducts({
+            filterType: 'priceRangeFilter',
+            priceRangeFilter: {
+                minValue:minPrice,
+                maxValue:maxPrice
+            }
+        }))
+    }
+
     return (
 
         <div className="card">
@@ -95,18 +108,37 @@ const ProductFilter = () => {
                 </header>
                 <div className="filter-content collapse show" id="collapse_3">
                     <div className="card-body">
-                        <input type="range" className="custom-range" min="0" max="100" name="" />
+                        <input 
+                            type="range" 
+                            className="custom-range" 
+                            min="0" 
+                            max="100" 
+                            value={maxPrice}
+                            onChange={(e) =>setMaxPrice(Number(e.target.value))}
+                        />
                         <div className="form-row">
                             <div className="form-group col-md-6">
                                 <label>Min</label>
-                                <input className="form-control" placeholder="$0" type="number" />
+                                <input 
+                                    className="form-control" 
+                                    placeholder="$0" 
+                                    type="number" 
+                                    value={minPrice}
+                                    onChange={(e) =>setMinPrice(Number(e.target.value))}
+                                />
                             </div>
                             <div className="form-group text-right col-md-6">
                                 <label>Max</label>
-                                <input className="form-control" placeholder="$1,0000" type="number" />
+                                <input 
+                                    className="form-control" 
+                                    placeholder="$1,0000" 
+                                    type="number"
+                                    value={maxPrice} 
+                                    onChange={(e) =>setMaxPrice(Number(e.target.value))}
+                                />
                             </div>
                         </div>
-                        <button className="btn btn-block btn-primary">Apply</button>
+                        <button className="btn btn-block btn-primary" onClick={handlePriceRangeFilterv}>Apply</button>
                     </div>
                 </div>
             </article>
@@ -145,30 +177,12 @@ const ProductFilter = () => {
                 <header className="card-header">
                     <a href="/" data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" className="">
                         <i className="icon-control fa fa-chevron-down"></i>
-                        <h6 className="title">More filter </h6>
+                        <h6 className="title"> Sort By Price</h6>
                     </a>
                 </header>
                 <div className="filter-content collapse in" id="collapse_5" >
                     <div className="card-body">
-                        <label className="custom-control custom-radio">
-                            <input type="radio" name="myfilter_radio" checked="" className="custom-control-input" />
-                            <div className="custom-control-label">Any condition</div>
-                        </label>
-
-                        <label className="custom-control custom-radio">
-                            <input type="radio" name="myfilter_radio" className="custom-control-input" />
-                            <div className="custom-control-label">Brand new </div>
-                        </label>
-
-                        <label className="custom-control custom-radio">
-                            <input type="radio" name="myfilter_radio" className="custom-control-input" />
-                            <div className="custom-control-label">Used items</div>
-                        </label>
-
-                        <label className="custom-control custom-radio">
-                            <input type="radio" name="myfilter_radio" className="custom-control-input" />
-                            <div className="custom-control-label">Very old</div>
-                        </label>
+                       
                     </div>
                 </div>
             </article>

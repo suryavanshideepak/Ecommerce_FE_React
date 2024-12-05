@@ -34,6 +34,11 @@ export const cartSlice = createSlice({
                 const searchString = action.payload.searchProduct
                 state.cart = state.cart.filter(item => item.productName.toLowerCase().includes(searchString))
             }
+            if(action.payload.filterType === 'priceRangeFilter'){
+                const minPrice = action.payload.priceRangeFilter.minValue
+                const maxPrice = action.payload.priceRangeFilter.maxValue
+                state.cart = state.cart.filter((item) => parseFloat(item.offerPrice) >= minPrice && parseFloat(item.offerPrice) <= maxPrice);
+            }
         },
         clearFilter: (state, action) => {
             state.cart = data
