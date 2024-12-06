@@ -12,6 +12,10 @@ const CartPage = () => {
     const handleItemRemoveFromCart = (id) => {
         dispatch(removeCartItem(id))
     }
+    const priceOfProducts = selectedCart.reduce((sum,item) => {
+        return sum + item.offerPrice;
+    },0)
+    const totalAmount = priceOfProducts + 40
     return (
         <div className='p-5' style={{minHeight:'100vh'}}>
             {selectedCart.length ?
@@ -68,16 +72,16 @@ const CartPage = () => {
                                         <h2>Price Details</h2>
                                     </div>
                                     <div className='d-flex justify-content-between py-2'> 
-                                        <p>Price(2Item)</p><p>$30</p>
+                                        <p>Price(Item)</p><p>${priceOfProducts}</p>
                                     </div>
                                     <div className='d-flex justify-content-between'>
-                                        <p>Delivery Charges</p><p>70</p>
+                                        <p>Delivery Charges</p><div><span className='text-success '>Free</span><p className='text-decoration-line-through text-danger'>70</p></div>
                                     </div>
                                     <div className='d-flex justify-content-between'>
                                         <p>Secured Packaging Fee</p><p>₹59</p>
                                     </div>
                                     <div className='d-flex justify-content-between'>
-                                    <h5>Total Amout</h5><p>4000</p>
+                                    <h5>Total Amount</h5><p>${totalAmount}</p>
 
                                     </div>
                                     <p className='text-success'>You will save $ on this order</p>
