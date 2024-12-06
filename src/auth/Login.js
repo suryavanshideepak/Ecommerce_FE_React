@@ -5,6 +5,8 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import Loader from "../utility/Loader";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../app/authSlice";
 
 const initialValues = {
   email: "",
@@ -14,47 +16,17 @@ const initialValues = {
 const Login = () => {
   const navigate = useNavigate();
   const [loader, setLoader ]= useState(false)
+  const dispatch = useDispatch()
   const { handleChange, values, errors, touched, handleBlur, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: loginSchema,
       onSubmit: (values, action) => {
         setLoader(true)
-        axios
-          .post(`http://localhost:4500/user/login`,{
-            email: values.email,
-            password: values.password,
-          })
-          .then(function (response) {
-            if (response) {
-              localStorage.setItem("token", response.data.accessToken);
-              localStorage.setItem(
-                "user",
-                JSON.stringify(response.config.data)
-              );
-              if (localStorage.getItem("token")) {
-                navigate("/menproduct");
-              } else {
-                navigate("/login");
-              }
-            } else {
-              toast.error('Error Notification !', {
-                position: toast.POSITION.TOP_RIGHT,
-              });
-              navigate("/login")
-            }
-          })
-          .catch(function (error) {
-            console.log("err", error);
-            if (error) {
-              toast.error('Error Notification !', {
-                position: toast.POSITION.TOP_RIGHT,
-              });
-            }
-          });
-          toast.success('Success Notification !',{
-            position:toast.POSITION.TOP_RIGHT
-          })
+        dispatch(login({email:values.email,password:values.password})).unwrap().then((res) => {
+          console.log(res)
+          setLoader(false)
+        }).catch((err) => setLoader(false) )
       },
     });
 

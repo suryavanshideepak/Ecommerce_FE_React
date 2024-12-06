@@ -8,8 +8,13 @@ const initialState = {
 
 export const login = createAsyncThunk(
     'user/login',async(payload) => {
-        const response = await axios.post('http://localhost:4500/user/login')
-        return response.data
+        try{
+            const response = await axios.post('http://localhost:4500/user/login',payload)
+            return response.data
+        }catch (error){
+            return error
+        }
+       
     }
 )
 
