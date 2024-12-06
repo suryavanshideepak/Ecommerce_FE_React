@@ -19,7 +19,7 @@ const ProductFilter = () => {
         dispatch(filterProducts({ filterType: 'productType', productType: productType }))
     }
     const handleCheckboxChange = (e) => {
-        const {name, checked} = e.target
+        const { name, checked } = e.target
         const updatedFilters = {
             ...filters,
             [name]: checked,
@@ -32,19 +32,23 @@ const ProductFilter = () => {
         const value = e.target.value
         setSearch(e.target.value)
         setTimeout(() => {
-            dispatch(filterProducts({filterType: 'searchProduct', searchProduct: value }))
-        },500)
+            dispatch(filterProducts({ filterType: 'searchProduct', searchProduct: value }))
+        }, 500)
     }
 
-    const handlePriceRangeFilterv=()=> {
+    const handlePriceRangeFilterv = () => {
         dispatch(filterProducts({
             filterType: 'priceRangeFilter',
             priceRangeFilter: {
-                minValue:minPrice,
-                maxValue:maxPrice
+                minValue: minPrice,
+                maxValue: maxPrice
             }
         }))
     }
+
+    const handleSort = (order) => {
+        dispatch(filterProducts({ filterType: 'sorting', sorting: order }))
+    };
 
     return (
 
@@ -60,7 +64,7 @@ const ProductFilter = () => {
                     <div className="card-body">
                         <form className="pb-3">
                             <div className="input-group">
-                                <input  value={search} onChange={handleSearchProduct} type="text" className="form-control" placeholder="Search" />
+                                <input value={search} onChange={handleSearchProduct} type="text" className="form-control" placeholder="Search" />
                                 <div className="input-group-append">
                                     <button className="btn btn-light" type="button"><i className="fa fa-search"></i></button>
                                 </div>
@@ -86,16 +90,16 @@ const ProductFilter = () => {
                 </header>
                 <div className="filter-content collapse show" id="collapse_2" >
 
-                {
-                    Object.entries(filters).map(([brand, isChecked]) => (
+                    {
+                        Object.entries(filters).map(([brand, isChecked]) => (
                             <div className="card-body" key={brand}>
                                 <label className="custom-control custom-checkbox">
                                     <input type="checkbox" onChange={handleCheckboxChange} name={brand} checked={isChecked} className="custom-control-input" />
                                     <div className="custom-control-label">{brand}</div>
                                 </label>
                             </div>
-                    ))
-                }
+                        ))
+                    }
                 </div>
 
             </article>
@@ -108,33 +112,33 @@ const ProductFilter = () => {
                 </header>
                 <div className="filter-content collapse show" id="collapse_3">
                     <div className="card-body">
-                        <input 
-                            type="range" 
-                            className="custom-range" 
-                            min="0" 
-                            max="100" 
+                        <input
+                            type="range"
+                            className="custom-range"
+                            min="0"
+                            max="100"
                             value={maxPrice}
-                            onChange={(e) =>setMaxPrice(Number(e.target.value))}
+                            onChange={(e) => setMaxPrice(Number(e.target.value))}
                         />
                         <div className="form-row">
                             <div className="form-group col-md-6">
                                 <label>Min</label>
-                                <input 
-                                    className="form-control" 
-                                    placeholder="$0" 
-                                    type="number" 
+                                <input
+                                    className="form-control"
+                                    placeholder="$0"
+                                    type="number"
                                     value={minPrice}
-                                    onChange={(e) =>setMinPrice(Number(e.target.value))}
+                                    onChange={(e) => setMinPrice(Number(e.target.value))}
                                 />
                             </div>
                             <div className="form-group text-right col-md-6">
                                 <label>Max</label>
-                                <input 
-                                    className="form-control" 
-                                    placeholder="$1,0000" 
+                                <input
+                                    className="form-control"
+                                    placeholder="$1,0000"
                                     type="number"
-                                    value={maxPrice} 
-                                    onChange={(e) =>setMaxPrice(Number(e.target.value))}
+                                    value={maxPrice}
+                                    onChange={(e) => setMaxPrice(Number(e.target.value))}
                                 />
                             </div>
                         </div>
@@ -174,17 +178,28 @@ const ProductFilter = () => {
                 </div>
             </article>
             <article className="filter-group">
-                <header className="card-header">
-                    <a href="/" data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" className="">
-                        <i className="icon-control fa fa-chevron-down"></i>
-                        <h6 className="title"> Sort By Price</h6>
-                    </a>
-                </header>
-                <div className="filter-content collapse in" id="collapse_5" >
-                    <div className="card-body">
-                       
-                    </div>
-                </div>
+                <button
+                    className="btn btn-primary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                >
+                    Sort by Price
+                </button>
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li>
+                        <button className="dropdown-item" onClick={() => handleSort("asc")}>
+                            Low to High
+                        </button>
+                    </li>
+                    <li>
+                        <button className="dropdown-item" onClick={() => handleSort("desc")}>
+                            High to Low
+                        </button>
+                    </li>
+                </ul>
+
             </article>
         </div>
     )

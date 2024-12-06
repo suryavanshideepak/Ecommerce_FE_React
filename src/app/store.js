@@ -16,7 +16,7 @@ const persistConfig = {
   key: "react-ecommerce",
   version: 1,
   storage,
-  whitelist: ["darkmode", "cart"],
+  whitelist: ["darkmode", "cart", "auth"],
 };
 
 const rootReducer = combineReducers(rootReducers);

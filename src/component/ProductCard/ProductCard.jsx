@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, getAllProducts } from '../../app/cartSlice'
 import ProductDetailsPage from '../../pages/ProductDetailsPage'
 
 const ProductCard = () => {
+    const [data, setData] = useState({})
     const { selectedCart, cart } = useSelector((state) => state?.cart)
     const dispatch = useDispatch()
 
@@ -43,7 +44,7 @@ const ProductCard = () => {
                                         </div>
                                         <h6 className="text-success">Free shipping</h6>
                                         <div className="d-flex flex-column mt-4">
-                                            <button className="btn btn-light btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg" style={{backgroundColor:'rgb(244, 51, 151)',color:'white'}} type="button">Details</button>
+                                            <button className="btn btn-light btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg" style={{backgroundColor:'rgb(244, 51, 151)',color:'white'}} type="button" onClick={() => setData(item)}>Details</button>
                                             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -53,7 +54,7 @@ const ProductCard = () => {
                                                     <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                    <ProductDetailsPage item={item}/>
+                                                    <ProductDetailsPage item={data}/>
                                                 </div>
                                             </div>
                                             </div>
