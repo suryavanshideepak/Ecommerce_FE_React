@@ -5,23 +5,33 @@ import ProductDetailsPage from '../../pages/ProductDetailsPage'
 
 const ProductCard = () => {
     const [data, setData] = useState({})
+    const [currentPage, setCurrentPage] = useState(1)
+    const itemsPerPage = 4
     const { selectedCart, cart } = useSelector((state) => state?.cart)
+    const totalPages = Math.ceil(cart.length / itemsPerPage);
+
     const dispatch = useDispatch()
 
     const handleAddToCart = (id) => {
         dispatch(addToCart(id))
     }
 
+    const goToPage = (page) => {
+        if (page >= 1 && page <= totalPages) {
+            setCurrentPage(page);
+        }
+    };
+
     useEffect(() => {
         dispatch(getAllProducts())
-    },[])
+    }, [])
 
     return (
         <>
             <div className="container">
                 <div className="d-flex justify-content-center row">
                     <div className="col-md-10 w-100">
-                        {cart.length && cart.map((item, index) => {
+                        {cart.length && cart.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((item, index) => {
                             return (
                                 <div className="row p-2 bg-white border rounded m-1">
                                     <div className="col-md-3 mt-1"><img alt='image1' className="img-fluid img-responsive rounded product-image" src={item.image} /></div>
@@ -44,25 +54,25 @@ const ProductCard = () => {
                                         </div>
                                         <h6 className="text-success">Free shipping</h6>
                                         <div className="d-flex flex-column mt-4">
-                                            <button className="btn btn-light btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg" style={{backgroundColor:'rgb(244, 51, 151)',color:'white'}} type="button" onClick={() => setData(item)}>Details</button>
+                                            <button className="btn btn-light btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg" style={{ backgroundColor: 'rgb(244, 51, 151)', color: 'white' }} type="button" onClick={() => setData(item)}>Details</button>
                                             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                    </button>
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <ProductDetailsPage item={data} />
+                                                    </div>
                                                 </div>
-                                                    <ProductDetailsPage item={data}/>
-                                                </div>
-                                            </div>
                                             </div>
                                             {
                                                 selectedCart?.length && selectedCart?.find((cartItem) => cartItem?.id === item.id) ?
                                                     <button
                                                         className="btn btn-outline-light btn-sm mt-2"
-                                                        style={{border:'1px solid grey',color:'grey'}}
+                                                        style={{ border: '1px solid grey', color: 'grey' }}
                                                         disabled={true}
                                                         type="button"
                                                     >
@@ -70,7 +80,7 @@ const ProductCard = () => {
                                                     </button> :
                                                     <button
                                                         className="btn btn-outline-light btn-sm mt-2"
-                                                        style={{border:'1px solid rgb(244, 51, 151)',color:'rgb(244, 51, 151)'}}
+                                                        style={{ border: '1px solid rgb(244, 51, 151)', color: 'rgb(244, 51, 151)' }}
                                                         type="button"
                                                         onClick={() => handleAddToCart(item.id)}
                                                     >
@@ -83,6 +93,46 @@ const ProductCard = () => {
                                 </div>
                             )
                         })}
+                    </div>
+                    <div className='col-md-12'>
+                        <div className='pagination pt-5'>
+                            <nav aria-label="Page navigation">
+                                <ul className="pagination">
+                                    <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+                                        <button
+                                            className="page-link"
+                                            onClick={() => goToPage(currentPage - 1)}
+                                        >
+                                            Previous
+                                        </button>
+                                    </li>
+
+                                    {Array.from({ length: totalPages }, (_, index) => (
+                                        <li
+                                            key={index}
+                                            className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
+                                        >
+                                            <button
+                                                className="page-link"
+                                                onClick={() => goToPage(index + 1)}
+                                            >
+                                                {index + 1}
+                                            </button>
+                                        </li>
+                                    ))}
+
+                                    <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+                                        <button
+                                            className="page-link"
+                                            onClick={() => goToPage(currentPage + 1)}
+                                        >
+                                            Next
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+
                     </div>
                 </div>
             </div>

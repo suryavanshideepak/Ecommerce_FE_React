@@ -142,7 +142,7 @@ const ProductFilter = () => {
                                 />
                             </div>
                         </div>
-                        <button className="btn btn-block btn-primary" onClick={handlePriceRangeFilterv}>Apply</button>
+                        <button className="btn btn-block btn-light" style={{backgroundColor:'rgb(243, 136, 192)',color:'white'}} onClick={handlePriceRangeFilterv}>Apply</button>
                     </div>
                 </div>
             </article>
@@ -178,7 +178,7 @@ const ProductFilter = () => {
                 </div>
             </article>
             <article className="filter-group">
-                <button
+                {/* <button
                     className="btn btn-primary dropdown-toggle"
                     type="button"
                     id="dropdownMenuButton"
@@ -186,19 +186,16 @@ const ProductFilter = () => {
                     aria-expanded="false"
                 >
                     Sort by Price
+                </button> */}
+                <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    sort By Price
                 </button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li>
-                        <button className="dropdown-item" onClick={() => handleSort("asc")}>
-                            Low to High
-                        </button>
-                    </li>
-                    <li>
-                        <button className="dropdown-item" onClick={() => handleSort("desc")}>
-                            High to Low
-                        </button>
-                    </li>
-                </ul>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-item" onClick={() =>handleSort('asc')}>Low to high</div>
+                    <div class="dropdown-item" onClick={() =>handleSort('desc')}>High to low</div>
+                </div>
+                </div>
 
             </article>
         </div>
