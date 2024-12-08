@@ -47,7 +47,7 @@ const Home = () => {
                   quia quis nam, consequuntur veritatis minus aperiam reiciendis
                   impedit ipsam nemo, cumque libero doloremque? Suscipit, fuga?
                 </p>
-                <button className="btn btn-primary">Info</button>
+                <button className="btn btn-light" style={{backgroundColor:'rgb(250, 47, 152)', color:'white'}}>get Details</button>
               </div>
               <div className="col-md-6 d-flex justify-content-center align-items-center">
                 <img src={image} alt="" />
@@ -66,7 +66,7 @@ const Home = () => {
                   quia quis nam, consequuntur veritatis minus aperiam reiciendis
                   impedit ipsam nemo, cumque libero doloremque? Suscipit, fuga?
                 </p>
-                <button className="btn btn-primary">Info</button>
+                <button className="btn btn-light" style={{backgroundColor:'rgb(250, 47, 152)', color:'white'}}>Get Details</button>
               </div>
               <div>
                 <button
