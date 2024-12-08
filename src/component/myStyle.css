@@ -41,6 +41,23 @@
     background-color: rgb(243, 136, 192); 
 }
 
+.pagination .page-item.active .page-link {
+    background-color: rgb(244, 51, 151); 
+    color: white; 
+    border-color: rgb(244, 51, 151); 
+}
+
+.pagination .page-link {
+    color: black; 
+    background-color: white; 
+    border: 1px solid #ddd; 
+}
+
+.pagination .page-link:hover {
+    background-color: #f8f9fa;
+    color: rgb(244, 51, 151); 
+}
+
 @media only screen and (max-width: 500px) {
     .sticky-filter-button{
       display: block !important;

@@ -31,7 +31,7 @@ const ProductCard = () => {
             <div className="container">
                 <div className="d-flex justify-content-center row">
                     <div className="col-md-10 w-100">
-                        {cart.length && cart.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((item, index) => {
+                        {cart.length ? cart.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((item, index) => {
                             return (
                                 <div className="row p-2 bg-white border rounded m-1">
                                     <div className="col-md-3 mt-1"><img alt='image1' className="img-fluid img-responsive rounded product-image" src={item.image} /></div>
@@ -92,7 +92,7 @@ const ProductCard = () => {
                                     </div>
                                 </div>
                             )
-                        })}
+                        }): "Sorry! No data found"}
                     </div>
                     <div className='col-md-12'>
                         <div className='pagination pt-5'>
