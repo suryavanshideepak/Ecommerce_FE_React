@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import image from "../images/shope.png";
 import ProductCard from "./ProductCard/ProductCard";
 import ProductFilter from "./ProductFilter/ProductFilter";
 import BannerCarousel from "./HomePageBanner/BannerCarousel";
+import { Button, Container, Offcanvas } from 'react-bootstrap';  
 import { useDispatch } from "react-redux";
 import { clearFilter } from "../app/cartSlice";
 
 const Home = () => {
   const dispatch = useDispatch()
+  const [show, setShow] = useState(false);  
+  const closeSidebar = () => setShow(false);  
+  const showSidebar = () => setShow(true);  
   return (
     <div className="d-flex flex-column min-vh-100">
       <main className="flex-grow-1">
@@ -71,32 +75,21 @@ const Home = () => {
                   data-bs-target="#offcanvasWithBackdrop"
                   aria-controls="offcanvasWithBackdrop"
                   className="sticky-filter-button"
+                  onClick={showSidebar}
                 >
                   Filter
                 </button>
-
-                <div
-                  className="offcanvas offcanvas-start"
-                  tabIndex="-1"
-                  id="offcanvasWithBackdrop"
-                  aria-labelledby="offcanvasWithBackdropLabel"
-                >
-                  <div className="offcanvas-header">
-                    <h5 className="offcanvas-title" id="offcanvasWithBackdropLabel">
-                      Filters
-                    </h5>
-                    <button
-                      type="button"
-                      className="btn-close text-reset"
-                      data-bs-dismiss="offcanvas"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div className="offcanvas-body">
-                  <ProductFilter/>
-                  </div>
+                <Container className='p-4'>  
+                <Offcanvas show={show} onHide={closeSidebar}>  
+                  <Offcanvas.Header closeButton>  
+                    <Offcanvas.Title>Apply Filter</Offcanvas.Title>  
+                  </Offcanvas.Header>  
+                  <Offcanvas.Body>  
+                    <ProductFilter/>  
+                  </Offcanvas.Body>  
+                </Offcanvas>  
+                </Container>  
                 </div>
-              </div>
 
             </div>
           </div>

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import { loginSchema } from "../Schema/index";
-import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import Loader from "../utility/Loader";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../app/authSlice";
 
@@ -14,7 +13,6 @@ const initialValues = {
 };
 
 const Login = () => {
-  const navigate = useNavigate();
   const [loader, setLoader ]= useState(false)
   const dispatch = useDispatch()
   const { handleChange, values, errors, touched, handleBlur, handleSubmit } =
