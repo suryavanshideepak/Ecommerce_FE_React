@@ -12,7 +12,7 @@ export const data = [
         id:2,
         image: "https://i.imgur.com/JvPeqEF.jpg",
         productName: 'Brown lather shoes',
-        offerPrice: '14.99',
+        offerPrice: '16.99',
         mrp: '22.99',
         productType: 'shoes',
         brand:'Nike'
@@ -30,7 +30,7 @@ export const data = [
         id:4,
         image: "https://i.imgur.com/QpjAiHq.jpg",
         productName: 'Electronics product to buy',
-        offerPrice: '13.99',
+        offerPrice: '17.99',
         mrp: '29.99',
         productType:'electronics',
         brand:'Samsung'
@@ -48,7 +48,7 @@ export const data = [
         id:6,
         image: "https://i.imgur.com/QpjAiHq.jpg",
         productName: 'Brown lather shoes',
-        offerPrice: '14.99',
+        offerPrice: '30.99',
         mrp: '22.99',
         productType: 'shoes',
         brand:'Nike'
@@ -66,7 +66,7 @@ export const data = [
         id:8,
         image: "https://i.imgur.com/QpjAiHq.jpg",
         productName: 'Electronics product to buy',
-        offerPrice: '13.99',
+        offerPrice: '40.99',
         mrp: '29.99',
         productType:'electronics',
         brand:'Samsung'

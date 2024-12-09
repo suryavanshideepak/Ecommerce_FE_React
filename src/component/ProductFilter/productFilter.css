@@ -27,6 +27,12 @@
     color: #212529;
     display: block;
 }
+.active-tab {
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(244, 51, 151);
+    border-bottom: 3px solid rgb(244, 51, 151); 
+  }
 
 .card-product-grid:hover .btn-overlay {
     opacity: 1;

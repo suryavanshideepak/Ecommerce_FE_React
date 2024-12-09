@@ -3,15 +3,38 @@ import image from "../images/shope.png";
 import ProductCard from "./ProductCard/ProductCard";
 import ProductFilter from "./ProductFilter/ProductFilter";
 import BannerCarousel from "./HomePageBanner/BannerCarousel";
-import { Button, Container, Offcanvas } from 'react-bootstrap';  
+import { Container, Offcanvas } from 'react-bootstrap';  
 import { useDispatch } from "react-redux";
 import { clearFilter } from "../app/cartSlice";
 
 const Home = () => {
+  const [search, setSearch] = useState("")
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(100);
+    const [activeFilter, setActiveFilter] = useState('');
+    const [sort, setSort] = useState('')
+    const [filters, setFilters] = useState({
+        Samsung: true,
+        Reebok: true,
+        Nike: true,
+        Addidas: true,
+    });
   const dispatch = useDispatch()
   const [show, setShow] = useState(false);  
   const closeSidebar = () => setShow(false);  
-  const showSidebar = () => setShow(true);  
+  const showSidebar = () => setShow(true);
+  const handleClearButton = () => {
+    dispatch(clearFilter())
+    setMinPrice(0)
+    setMaxPrice(100);
+    setActiveFilter('')
+    setFilters({
+      Samsung: true,
+      Reebok: true,
+      Nike: true,
+      Addidas: true,
+    })
+  }  
   return (
     <div className="d-flex flex-column min-vh-100">
       <main className="flex-grow-1">
@@ -27,9 +50,22 @@ const Home = () => {
               <div className="col-md-3 my-1 hide-on-small">
                 <div className="d-flex justify-content-between align-items-center">
                   <h2> Filter</h2>
-                  <div style={{ cursor: 'pointer' }} onClick={() => dispatch(clearFilter())} > Clear Filter</div>
+                  <div style={{ cursor: 'pointer' }} onClick={handleClearButton} > Clear Filter</div>
                 </div>
-                <ProductFilter />
+                <ProductFilter 
+                  search={search}
+                  setSearch={setSearch}
+                  minPrice={minPrice}
+                  setMinPrice={setMinPrice}
+                  maxPrice={maxPrice}
+                  setMaxPrice={setMaxPrice}
+                  activeFilter={activeFilter}
+                  setActiveFilter={setActiveFilter}
+                  filters={filters}
+                  setFilters={setFilters}
+                  sort={sort}
+                  setSort={setSort}
+                />
               </div>
               <div className="col-md-9 my-1">
                 <h2> Top Rated Products</h2>

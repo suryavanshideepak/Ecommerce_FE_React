@@ -1,21 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../ProductFilter/productFilter.css'
 import { useDispatch } from 'react-redux'
 import { filterProducts } from '../../app/cartSlice'
 
-const ProductFilter = () => {
-    const [search, setSearch] = useState("")
-    const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(100);
-    const [filters, setFilters] = useState({
-        Samsung: true,
-        Reebok: true,
-        Nike: true,
-        Addidas: true,
-    });
-
+const ProductFilter = ({
+    search,
+    setSearch,
+    minPrice,
+    setMinPrice,
+    maxPrice,
+    setMaxPrice,
+    activeFilter,
+    setActiveFilter,
+    filters,
+    setFilters,
+    sort, 
+    setSort
+}) => {
     const dispatch = useDispatch()
     const handleProductType = (productType) => {
+        console.log(productType)
+        setActiveFilter(productType);
         dispatch(filterProducts({ filterType: 'productType', productType: productType }))
     }
     const handleCheckboxChange = (e) => {
@@ -72,10 +77,22 @@ const ProductFilter = () => {
                         </form>
 
                         <ul className="list-menu">
-                            <li style={{ cursor: 'pointer' }} onClick={() => handleProductType('cloth')}>Cloth  </li>
-                            <li style={{ cursor: 'pointer' }} onClick={() => handleProductType('shoes')}>Shoes </li>
-                            <li style={{ cursor: 'pointer' }} onClick={() => handleProductType('watch')}>Watch </li>
-                            <li style={{ cursor: 'pointer' }} onClick={() => handleProductType('electronics')}>Electronics </li>
+                            {[
+                                { type: 'cloth', label: 'Cloth' },
+                                {  type: 'shoes', label: 'Shoes'},
+                                {type: 'watch', label: 'Watch'},
+                                {type: 'electronics', label: 'Electronics'}
+                            ].map((item) => (
+                                <li
+                                    key={item.type}
+                                    className={`py-2 ${activeFilter === item.type ? 'active-tab' : ''}`}
+                                    style={{cursor:'pointer'}}
+                                    onClick={() => handleProductType(item.type)}
+                                >
+                                {item.label}
+                                </li>
+                            )) }
+                          
                         </ul>
 
                     </div>
@@ -142,7 +159,7 @@ const ProductFilter = () => {
                                 />
                             </div>
                         </div>
-                        <button className="btn btn-block btn-light" style={{backgroundColor:'rgb(243, 136, 192)',color:'white'}} onClick={handlePriceRangeFilterv}>Apply</button>
+                        <button className="btn btn-block btn-light" style={{backgroundColor:'rgb(244, 51, 151)',color:'white'}} onClick={handlePriceRangeFilterv}>Apply</button>
                     </div>
                 </div>
             </article>
@@ -188,13 +205,13 @@ const ProductFilter = () => {
                     Sort by Price
                 </button> */}
                 <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {
+                        sort === 'asc' ?  <button onClick={() =>handleSort('asc')} class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        sort By Price
+                    </button>: <button onClick={() =>handleSort('desc')} class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     sort By Price
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <div class="dropdown-item" onClick={() =>handleSort('asc')}>Low to high</div>
-                    <div class="dropdown-item" onClick={() =>handleSort('desc')}>High to low</div>
-                </div>
+                    }
                 </div>
 
             </article>
