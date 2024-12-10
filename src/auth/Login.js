@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { loginSchema } from "../Schema/index";
 import { ToastContainer } from 'react-toastify';
 import Loader from "../utility/Loader";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../app/authSlice";
 
@@ -15,6 +15,7 @@ const initialValues = {
 const Login = () => {
   const [loader, setLoader ]= useState(false)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { handleChange, values, errors, touched, handleBlur, handleSubmit } =
     useFormik({
       initialValues: initialValues,
@@ -22,9 +23,12 @@ const Login = () => {
       onSubmit: (values, action) => {
         setLoader(true)
         dispatch(login({email:values.email,password:values.password})).unwrap().then((res) => {
-          console.log(res)
+          navigate('/')
           setLoader(false)
-        }).catch((err) => setLoader(false) )
+        }).catch((err) => {
+          setLoader(false)
+          useNavigate('/')
+        } )
       },
     });
 

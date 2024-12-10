@@ -1,10 +1,12 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../app/cartSlice'
+import { useNavigate } from 'react-router-dom'
 
 const ProductDetailsPage = ({ item = {} }) => {
     const { selectedCart } = useSelector((state) => state?.cart)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleAddToCart = (id) => {
         dispatch(addToCart(id))
@@ -28,7 +30,9 @@ const ProductDetailsPage = ({ item = {} }) => {
                             <button
                                 className="btn btn-light btn-sm w-50 m-1"
                                 style={{ color: 'white',backgroundColor: 'rgb(244, 51, 151)'}}
-                                type="button">
+                                type="button"
+                                onClick={() => navigate('/login')}
+                            >
                                 Buy Now
                             </button>
                             {

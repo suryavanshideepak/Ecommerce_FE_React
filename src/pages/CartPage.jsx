@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeCartItem } from '../app/cartSlice'
+import { useNavigate } from 'react-router-dom'
 
 const CartPage = () => {
     const { selectedCart } = useSelector((state) => state.cart)
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const [quantity, setQuantity] = useState(1);
 
@@ -87,7 +89,7 @@ const CartPage = () => {
                                     <p className='text-success'>You will save $ on this order</p>
                                 </div>
                                 <div className='m-1'> 
-                                    <button className='btn btn-light border py-3 text-white w-100' style={{backgroundColor:'rgb(244, 51, 151)'}}>
+                                    <button onClick={() => navigate('/login')} className='btn btn-light border py-3 text-white w-100' style={{backgroundColor:'rgb(244, 51, 151)'}}>
                                         PLACE ORDER
                                     </button>
                                 </div>
