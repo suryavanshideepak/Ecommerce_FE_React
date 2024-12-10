@@ -56,7 +56,7 @@ const Signup = () => {
       <ToastContainer />
       {loader ? <Loader /> :
         <div className="main">
-          <div className="w-50 bg-white">
+          <div className="w-75 bg-white p-5">
               <form className="form form_signup p-5" onSubmit={handleSubmit}>
                 <div className="row">
                 <h1 className="px-auto nav_l text-center">BucketFull</h1>
