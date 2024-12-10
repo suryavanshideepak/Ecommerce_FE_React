@@ -52,7 +52,9 @@ const ProductFilter = ({
     }
 
     const handleSort = (order) => {
-        dispatch(filterProducts({ filterType: 'sorting', sorting: order }))
+        const newSortOrder = sort === 'asc' ? 'desc' : 'asc';
+        setSort(newSortOrder)
+        dispatch(filterProducts({ filterType: 'sorting', sorting: newSortOrder }))
     };
 
     return (
@@ -204,14 +206,18 @@ const ProductFilter = ({
                 >
                     Sort by Price
                 </button> */}
-                <div class="dropdown">
-                    {
-                        sort === 'asc' ?  <button onClick={() =>handleSort('asc')} class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        sort By Price
-                    </button>: <button onClick={() =>handleSort('desc')} class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    sort By Price
+                <div class="dropdown text-center py-4">
+                <button
+                    onClick={handleSort}
+                    className="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >
+                    {sort === 'asc' ? 'Sort by Price: Ascending' : 'Sort by Price: Descending'}
                 </button>
-                    }
                 </div>
 
             </article>

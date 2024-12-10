@@ -12,7 +12,7 @@ const Home = () => {
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(100);
     const [activeFilter, setActiveFilter] = useState('');
-    const [sort, setSort] = useState('')
+    const [sort, setSort] = useState('asc')
     const [filters, setFilters] = useState({
         Samsung: true,
         Reebok: true,
@@ -28,6 +28,7 @@ const Home = () => {
     setMinPrice(0)
     setMaxPrice(100);
     setActiveFilter('')
+    setSort('')
     setFilters({
       Samsung: true,
       Reebok: true,

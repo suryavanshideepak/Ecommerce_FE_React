@@ -26,8 +26,8 @@ const ProductDetailsPage = ({ item = {} }) => {
                         </div>
                         <div className='d-flex w-100'>
                             <button
-                                className="btn btn-warning btn-sm w-50 m-1"
-                                style={{ color: 'white' }}
+                                className="btn btn-light btn-sm w-50 m-1"
+                                style={{ color: 'white',backgroundColor: 'rgb(244, 51, 151)'}}
                                 type="button">
                                 Buy Now
                             </button>
