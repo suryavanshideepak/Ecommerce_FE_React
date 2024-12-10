@@ -27,7 +27,7 @@ const Login = () => {
           setLoader(false)
         }).catch((err) => {
           setLoader(false)
-          useNavigate('/')
+          navigate('/')
         } )
       },
     });
