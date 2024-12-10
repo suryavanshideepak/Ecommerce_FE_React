@@ -197,24 +197,11 @@ const ProductFilter = ({
                 </div>
             </article>
             <article className="filter-group">
-                {/* <button
-                    className="btn btn-primary dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false"
-                >
-                    Sort by Price
-                </button> */}
-                <div class="dropdown text-center py-4">
+                <div class=" text-center py-4">
                 <button
                     onClick={handleSort}
-                    className="btn btn-secondary dropdown-toggle"
+                    className="btn btn-secondary"
                     type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
                     >
                     {sort === 'asc' ? 'Sort by Price: Ascending' : 'Sort by Price: Descending'}
                 </button>

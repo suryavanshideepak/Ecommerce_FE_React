@@ -28,7 +28,7 @@ const Home = () => {
     setMinPrice(0)
     setMaxPrice(100);
     setActiveFilter('')
-    setSort('')
+    setSort('asc')
     setFilters({
       Samsung: true,
       Reebok: true,

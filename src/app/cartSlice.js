@@ -40,7 +40,7 @@ export const cartSlice = createSlice({
                 state.cart = state.cart.filter((item) => parseFloat(item.offerPrice) >= minPrice && parseFloat(item.offerPrice) <= maxPrice);
             }
             if(action.payload.filterType === 'sorting'){
-                state.cart = state.cart.sort((a, b) => {
+                state.cart = [...state.cart].sort((a, b) => {
                     if(action.payload.sorting === 'asc'){
                         return parseFloat(a.offerPrice) - parseFloat(b.offerPrice)
                     }else if(action.payload.sorting === 'desc'){
