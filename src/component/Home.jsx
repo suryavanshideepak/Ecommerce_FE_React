@@ -122,7 +122,20 @@ const Home = () => {
                     <Offcanvas.Title>Apply Filter</Offcanvas.Title>  
                   </Offcanvas.Header>  
                   <Offcanvas.Body>  
-                    <ProductFilter/>  
+                    <ProductFilter 
+                      search={search}
+                      setSearch={setSearch}
+                      minPrice={minPrice}
+                      setMinPrice={setMinPrice}
+                      maxPrice={maxPrice}
+                      setMaxPrice={setMaxPrice}
+                      activeFilter={activeFilter}
+                      setActiveFilter={setActiveFilter}
+                      filters={filters}
+                      setFilters={setFilters}
+                      sort={sort}
+                      setSort={setSort}
+                    />  
                   </Offcanvas.Body>  
                 </Offcanvas>  
                 </Container>  
