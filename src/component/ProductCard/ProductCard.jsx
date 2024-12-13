@@ -33,7 +33,7 @@ const ProductCard = () => {
                     <div className="col-md-10 w-100">
                         {cart.length ? cart.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((item, index) => {
                             return (
-                                <div className="row p-2 bg-white border rounded m-1">
+                                <div className="row p-2 bg-white border rounded m-1" style={{boxShadow:' rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px'}}>
                                     <div className="col-md-3 mt-1"><img alt='image1' className="img-fluid img-responsive rounded product-image" src={item.image} /></div>
                                     <div className="col-md-6 mt-1">
                                         <h5>{item.productName}</h5>

@@ -59,7 +59,7 @@ const ProductFilter = ({
 
     return (
 
-        <div className="card">
+        <div className="card" style={{boxShadow:' rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px'}}>
             <article className="filter-group">
                 <header className="card-header">
                     <a href="/" data-toggle="collapse" data-target="#collapse_1" aria-expanded="false" className="">

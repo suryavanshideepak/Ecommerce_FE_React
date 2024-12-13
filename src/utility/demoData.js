@@ -70,5 +70,41 @@ export const data = [
         mrp: '29.99',
         productType:'electronics',
         brand:'Samsung'
-    }
+    },
+    {
+        id:9,
+        image: "https://i.imgur.com/QpjAiHq.jpg",
+        productName: 'Mens casual shirt checkbox',
+        offerPrice: '13.99',
+        mrp: '20.99',
+        productType:'cloth',
+        brand:'Addidas'
+    },
+    {
+        id:10,
+        image: "https://i.imgur.com/JvPeqEF.jpg",
+        productName: 'Brown lather shoes',
+        offerPrice: '16.99',
+        mrp: '22.99',
+        productType: 'shoes',
+        brand:'Nike'
+    },
+    {
+        id:11,
+        image: "https://visualeducation.com/wp-content/uploads/2018/05/Watch-live-product-shoot.jpg",
+        productName: 'Reebox watch stylish',
+        offerPrice: '11.99',
+        mrp: '25.99',
+        productType:'watch',
+        brand:'Reebok',
+    },
+    {
+        id:12,
+        image: "https://www.meteorelectrical.com/media/wysiwyg/dev.jpeg",
+        productName: 'Electronics product to buy',
+        offerPrice: '17.99',
+        mrp: '29.99',
+        productType:'electronics',
+        brand:'Samsung'
+    },
 ]
